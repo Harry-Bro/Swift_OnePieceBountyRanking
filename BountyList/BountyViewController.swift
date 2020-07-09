@@ -10,6 +10,8 @@ import UIKit
 
 class BountyViewController: UIViewController {
 
+    let viewModel = BountyInfoViewModel()
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             
@@ -31,6 +33,7 @@ class BountyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
 }
 
 extension BountyViewController: UITableViewDataSource {
@@ -38,7 +41,7 @@ extension BountyViewController: UITableViewDataSource {
     
     // 몇 개의 cell을 보여줄까?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel.numOfbountyList
     }
     
     // cell 구분자를 어떻게 할까
@@ -48,11 +51,9 @@ extension BountyViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-//        let img = UIImage(named: "\(nameList[indexPath.row]).jpg")
-//        cell.imgView.image = img
-//        cell.nameLabel.text = nameList[indexPath.row]
-//        cell.bountylabel.text = "\(bountyList[indexPath.row])"
-//
+        cell.nameLabel.text = viewModel.bountyList[indexPath.row].name
+        cell.bountylabel.text = "\(viewModel.bountyList[indexPath.row].bounty)"
+        
         return cell
     }
 }
@@ -88,5 +89,8 @@ class BountyInfoViewModel {
         BountyInfo(name: "sanji", bounty: 77000000),
         BountyInfo(name: "zoro", bounty: 120000000)
     ]
-    
+ 
+    var numOfbountyList: Int {
+        return bountyList.count
+    }
 }
