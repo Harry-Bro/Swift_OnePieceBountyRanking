@@ -53,6 +53,7 @@ extension BountyViewController: UITableViewDataSource {
         
         cell.nameLabel.text = viewModel.bountyList[indexPath.row].name
         cell.bountylabel.text = "\(viewModel.bountyList[indexPath.row].bounty)"
+        cell.imgView.image = viewModel.bountyList[indexPath.row].img
         
         return cell
     }
