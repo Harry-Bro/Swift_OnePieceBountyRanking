@@ -8,11 +8,11 @@
 
 import UIKit
 
-class BountyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BountyViewController: UIViewController {
     
     let nameList: [String] = ["brook", "chopper", "franky", "luffy", "nami", "robin", "sanji", "zoro"]
     let bountyList: [Int] = [33000000, 50, 44000000, 300000000, 16000000, 80000000, 77000000, 120000000]
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             
@@ -34,7 +34,9 @@ class BountyViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+}
+
+extension BountyViewController: UITableViewDataSource {
     // UITableViewDataSource
     
     // 몇 개의 cell을 보여줄까?
@@ -56,8 +58,9 @@ class BountyViewController: UIViewController, UITableViewDataSource, UITableView
         
         return cell
     }
+}
 
-    
+extension BountyViewController: UITableViewDelegate {
     // UITableViewDelegate
     // 클릭하고 어떻게 할까?
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -67,7 +70,6 @@ class BountyViewController: UIViewController, UITableViewDataSource, UITableView
         performSegue(withIdentifier: "showDetail", sender: indexPath.row)
     }
 }
-
 
 // Custom cell
 
