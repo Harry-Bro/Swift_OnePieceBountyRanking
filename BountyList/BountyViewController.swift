@@ -23,8 +23,8 @@ class BountyViewController: UIViewController {
                 
                 // vc는 DetailViewController이니까
                 // vc에 있는 변수에 값을 담아준다. 즉 DetailViewController에 값이 들어간다.
-//                vc?.name = nameList[index]
-//                vc?.bounty = bountyList[index]
+                vc?.name = viewModel.bountyList[index].name
+                vc?.bounty = viewModel.bountyList[index].bounty
             }
         }
     }
