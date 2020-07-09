@@ -9,9 +9,6 @@
 import UIKit
 
 class BountyViewController: UIViewController {
-    
-    let nameList: [String] = ["brook", "chopper", "franky", "luffy", "nami", "robin", "sanji", "zoro"]
-    let bountyList: [Int] = [33000000, 50, 44000000, 300000000, 16000000, 80000000, 77000000, 120000000]
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
@@ -24,8 +21,8 @@ class BountyViewController: UIViewController {
                 
                 // vc는 DetailViewController이니까
                 // vc에 있는 변수에 값을 담아준다. 즉 DetailViewController에 값이 들어간다.
-                vc?.name = nameList[index]
-                vc?.bounty = bountyList[index]
+//                vc?.name = nameList[index]
+//                vc?.bounty = bountyList[index]
             }
         }
     }
@@ -41,7 +38,7 @@ extension BountyViewController: UITableViewDataSource {
     
     // 몇 개의 cell을 보여줄까?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bountyList.count
+        return 0
     }
     
     // cell 구분자를 어떻게 할까
@@ -51,11 +48,11 @@ extension BountyViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let img = UIImage(named: "\(nameList[indexPath.row]).jpg")
-        cell.imgView.image = img
-        cell.nameLabel.text = nameList[indexPath.row]
-        cell.bountylabel.text = "\(bountyList[indexPath.row])"
-        
+//        let img = UIImage(named: "\(nameList[indexPath.row]).jpg")
+//        cell.imgView.image = img
+//        cell.nameLabel.text = nameList[indexPath.row]
+//        cell.bountylabel.text = "\(bountyList[indexPath.row])"
+//
         return cell
     }
 }
@@ -72,9 +69,24 @@ extension BountyViewController: UITableViewDelegate {
 }
 
 // Custom cell
-
 class ListCell: UITableViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bountylabel: UILabel!
+}
+
+
+class BountyInfoViewModel {
+    
+    let bountyList: [BountyInfo] = [
+        BountyInfo(name: "brook", bounty: 33000000),
+        BountyInfo(name: "chopper", bounty: 50),
+        BountyInfo(name: "franky", bounty: 44000000),
+        BountyInfo(name: "luffy", bounty: 300000000),
+        BountyInfo(name: "nami", bounty: 16000000),
+        BountyInfo(name: "robin", bounty: 80000000),
+        BountyInfo(name: "sanji", bounty: 77000000),
+        BountyInfo(name: "zoro", bounty: 120000000)
+    ]
+    
 }
